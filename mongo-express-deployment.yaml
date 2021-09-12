@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongo-express
-  labels:
+  namespace: default # K  namespace: default, keeping to default we can create namespace with "apply -nanemspace flag
+labels:
     app: mongo-express
 spec: 
   replicas: 1
@@ -40,6 +41,7 @@ apiVersion: v1
 kind: Service
 metadata: 
   name: mongo-express-service
+  namespace: default
 spec:
   selector: #External Service connects client to worker
     app: mongo-express
